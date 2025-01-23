@@ -8,5 +8,7 @@
     <string name="logo">LOGO</string>
     <string name="chat_live_stream">Чат прямого эфира</string>
     <string name="make_donate">Сделать донат</string>
+    <string name="crypto_bubbles">Crypto Bubbles</string>
+    <string name="search_crypto">Поиск криптовалюты</string>
 
 </resources>

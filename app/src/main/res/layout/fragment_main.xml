@@ -7,46 +7,89 @@
     android:layout_height="match_parent"
     android:background="#222222"
     tools:context=".screens.MainFragment"
-    tools:ignore="MissingConstraints"
-    android:paddingHorizontal="@dimen/_20dp">
+    tools:ignore="MissingConstraints">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/logo"
+        android:background="#444444"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50dp">
+        <TextView
+            android:layout_marginStart="@dimen/_10dp"
+            android:id="@+id/tvLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/semi_bold"
+            android:text="@string/crypto_bubbles"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_21sp"
+            app:layout_constraintStart_toEndOf="@id/ivMenu"
+            app:layout_constraintTop_toTopOf="@id/ivMenu"
+            app:layout_constraintBottom_toBottomOf="@id/ivMenu"/>
 
-    <TextView
-        android:layout_marginStart="@dimen/_15dp"
-        android:layout_marginTop="@dimen/_15dp"
-        android:id="@+id/tvLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/semi_bold"
-        android:text="@string/logo"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_21sp"
-        app:layout_constraintStart_toEndOf="@id/ivMenu"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/ivMenu"
+            android:layout_width="@dimen/_35dp"
+            android:layout_height="@dimen/_35dp"
+            android:layout_marginStart="@dimen/_10dp"
+            android:background="@drawable/logo64"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:visibility="gone"
+            android:id="@+id/etSearch"
+            android:paddingHorizontal="@dimen/_35dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textColorHint="#616161"
+            android:textSize="@dimen/_16sp"
+            android:hint="@string/search_crypto"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40dp"
+            android:layout_marginHorizontal="@dimen/_8dp"
+            android:background="@drawable/et_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/ivMenu"
+            app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/ivSearchIcon"
+            app:layout_constraintTop_toTopOf="@id/etSearch"
+            app:layout_constraintBottom_toBottomOf="@id/etSearch"
+            app:layout_constraintStart_toStartOf="@id/etSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/search"/>
+        <FrameLayout
+            android:id="@+id/ivSearch"
+            android:layout_marginEnd="@dimen/_10dp"
+            app:layout_constraintTop_toTopOf="@id/ivMenu"
+            app:layout_constraintBottom_toBottomOf="@id/ivMenu"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/icon_search"
+            android:layout_width="@dimen/_40dp"
+            android:layout_height="@dimen/_40dp">
+            <ImageView
+                android:layout_gravity="center"
+                android:src="@drawable/search_crypto"
+                android:layout_width="@dimen/_22dp"
+                android:layout_height="@dimen/_22dp"/>
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/ivMenu"
-        android:layout_marginTop="@dimen/_8dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/vibe"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <ImageView
-        app:layout_constraintTop_toTopOf="@id/ivMenu"
-        app:layout_constraintBottom_toBottomOf="@id/ivMenu"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/icon_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+
     <ProgressBar
+        android:layout_marginStart="@dimen/_15dp"
+        android:layout_marginEnd="@dimen/_45dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvLogo"
+        app:layout_constraintTop_toBottomOf="@id/logo"
         android:layout_marginTop="@dimen/_22dp"
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_36dp"
         android:progressDrawable="@drawable/custom_progress_bar"
+        android:layout_height="@dimen/_36dp"
         style="?android:attr/progressBarStyleHorizontal"
         android:max="100"
         android:progress="50" />
@@ -74,6 +117,7 @@
         app:layout_constraintStart_toStartOf="@id/progressBar"
         app:layout_constraintTop_toBottomOf="@id/progressBar"/>
     <TextView
+        android:id="@+id/tvFull"
         android:fontFamily="@font/semi_bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -84,56 +128,33 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/progressBar"
         app:layout_constraintTop_toBottomOf="@id/progressBar"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ballsLayout"
+        android:layout_marginHorizontal="@dimen/_10dp"
+        android:layout_marginTop="@dimen/_10dp"
+        android:layout_marginBottom="@dimen/_10dp"
+        app:layout_constraintTop_toBottomOf="@id/tvFull"
+        app:layout_constraintBottom_toTopOf="@id/ivDonate"
+        app:layout_constraintVertical_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <com.example.sparky.utils.BouncingCircleView
+            android:id="@+id/bouncingView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.example.sparky.utils.CustomCircleView
-        android:layout_marginBottom="@dimen/_150dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/ivExmCircular"
-        android:layout_width="@dimen/_200dp"
-        android:layout_height="@dimen/_200dp"/>
-
-    <com.example.sparky.utils.CustomCircleView
-        android:layout_marginBottom="@dimen/_150dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/ivExmCircularSmall"
-        android:layout_width="@dimen/_60dp"
-        android:layout_height="@dimen/_60dp"/>
-
-    <com.example.sparky.utils.CustomCircleView
-        android:layout_marginBottom="@dimen/_220dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/ivExmCircularMedium"
-        android:layout_width="@dimen/_120dp"
-        android:layout_height="@dimen/_120dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_4dp"
-        android:fontFamily="@font/bold"
-        android:text="@string/chat_live_stream"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_17sp"
-        app:layout_constraintBottom_toBottomOf="@id/ivDonate"
-        app:layout_constraintEnd_toStartOf="@+id/ivDonate"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/ivDonate" />
     <ImageView
-        android:id="@+id/ivDonate"
+        android:layout_marginHorizontal="@dimen/_8dp"
         android:background="@drawable/button_green_background"
-        app:layout_constraintBottom_toBottomOf="@id/ivSettings"
-        app:layout_constraintTop_toTopOf="@id/ivSettings"
-        app:layout_constraintEnd_toStartOf="@id/ivSettings"
-        android:layout_marginEnd="@dimen/_10dp"
-        android:layout_width="@dimen/_125dp"
-        android:layout_height="@dimen/_35dp"/>
+        android:id="@+id/ivDonate"
+        app:layout_constraintHorizontal_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_48dp"
+        app:layout_constraintTop_toTopOf="@id/settingLayout"
+        app:layout_constraintBottom_toBottomOf="@id/settingLayout"
+        app:layout_constraintEnd_toStartOf="@id/settingLayout"
+        app:layout_constraintStart_toStartOf="parent"/>
     <TextView
         app:layout_constraintTop_toTopOf="@id/ivDonate"
         app:layout_constraintBottom_toBottomOf="@id/ivDonate"
@@ -145,21 +166,64 @@
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-
-    <FrameLayout
-        android:padding="@dimen/_5dp"
-        android:background="@drawable/background_settings"
-        android:id="@+id/ivSettings"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginEnd="@dimen/_10dp"
+        android:id="@+id/settingLayout"
         android:layout_marginBottom="@dimen/_60dp"
-        android:layout_width="@dimen/_40dp"
-        android:layout_height="@dimen/_40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/icon_settings"
-            />
-    </FrameLayout>
+
+        <FrameLayout
+            android:background="@drawable/bottom_switch_choose"
+            android:id="@+id/ivBalls"
+            android:layout_width="@dimen/_50dp"
+            android:layout_height="@dimen/_48dp">
+            <ImageView
+                android:layout_gravity="center"
+                android:src="@drawable/icon_balls"
+                android:layout_width="@dimen/_44dp"
+                android:layout_height="@dimen/_44dp"/>
+        </FrameLayout>
+
+        <FrameLayout
+            app:layout_constraintStart_toEndOf="@id/ivBalls"
+            android:background="#444444"
+            android:id="@+id/ivChat"
+            android:layout_width="@dimen/_50dp"
+            android:layout_height="@dimen/_48dp">
+            <ImageView
+                android:layout_gravity="center"
+                android:src="@drawable/chat_round_line_svgrepo_com"
+                android:layout_width="@dimen/_30dp"
+                android:layout_height="@dimen/_30dp"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:background="#444444"
+            app:layout_constraintStart_toEndOf="@id/ivChat"
+            android:id="@+id/ivVibe"
+            android:layout_width="@dimen/_50dp"
+            android:layout_height="@dimen/_48dp">
+            <ImageView
+                android:layout_gravity="center"
+                android:src="@drawable/vibe"
+                android:layout_width="@dimen/_45dp"
+                android:layout_height="@dimen/_45dp"/>
+        </FrameLayout>
+        <FrameLayout
+            app:layout_constraintStart_toEndOf="@id/ivVibe"
+            android:id="@+id/ivSetting"
+            android:background="@drawable/bottom_end_switch"
+            android:layout_width="@dimen/_50dp"
+            android:layout_height="@dimen/_48dp">
+            <ImageView
+                android:layout_gravity="center"
+                android:src="@drawable/icon_settings"
+                android:layout_width="@dimen/_30dp"
+                android:layout_height="@dimen/_30dp"/>
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
